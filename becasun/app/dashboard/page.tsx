@@ -1,10 +1,10 @@
 'use client';
 
-import ActivitiesSection from "@/components/Dashboard/ActivitiesSection/ActivitiesSection";
-import CompanyInfo from "@/components/Dashboard/CompanyInfo/CompanyInfo";
-import FeedbackForm from "@/components/Dashboard/FeedbackForm/FeedbackForm";
-import StatCard from "@/components/Dashboard/StatCard/StatCard";
-import WelcomeBanner from "@/components/Dashboard/WelcomeBanner/WelcomeBanner";
+import ActivitiesSection from "@/components/DashboardHome/ActivitiesSection/ActivitiesSection";
+import CompanyInfo from "@/components/DashboardHome/CompanyInfo/CompanyInfo";
+import FeedbackForm from "@/components/DashboardHome/FeedbackForm/FeedbackForm";
+import StatCard from "@/components/DashboardHome/StatCard/StatCard";
+import WelcomeBanner from "@/components/DashboardHome/WelcomeBanner/WelcomeBanner";
 import { FaCoins, FaBatteryFull, FaPiggyBank, FaLeaf } from "react-icons/fa";
 
 export default function DashboardPage() {
