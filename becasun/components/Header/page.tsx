@@ -9,6 +9,13 @@ interface User {
   email: string;
 }
 
+const navigationLinks = [
+  { name: "Trang chủ" , page: "home"},
+  { name: "Hóa đơn", page: "statement"},
+  { name: "Bảng điều khiển", page: "dashboard"},
+  { name: "Sở hữu & Lịch sử", page: "ownership"},
+];
+
 export default function Header() {
   const router = useRouter();
 
@@ -35,26 +42,22 @@ export default function Header() {
           className="flex items-center gap-2 cursor-pointer"
           onClick={() => handleNavigate("home")}
         >
-          <FaSolarPanel color="text-yellow-500"  size={16} />
-          <h1 className="text-xl font-bold text-gray-800">Becasunver4</h1>
+          <FaSolarPanel color="text-yellow-500" size={16} />
+          <h1 className="text-xl font-bold text-gray-800">Becasun</h1>
         </div>
 
         {/* Navigation */}
         <nav>
           <ul className="flex gap-6 text-gray-700 font-medium">
-            {["home", "statement", "dashboard", "ownership"].map((page) => (
-              <li key={page}>
+            
+
+            {navigationLinks.map((link) => (
+              <li key={link.page}>
                 <button
-                  onClick={() => handleNavigate(page)}
-                  className="hover:text-yellow-600 transition-colors"
+                  onClick={() => handleNavigate(link.page)}
+                  className="hover:text-yellow-600 transition-colors cursor-pointer"
                 >
-                  {page === "home"
-                    ? "Trang chủ"
-                    : page === "statement"
-                    ? "Hóa đơn"
-                    : page === "dashboard"
-                    ? "Bảng điều khiển"
-                    : "Sở hữu & Lịch sử"}
+                  {link.name}
                 </button>
               </li>
             ))}
@@ -63,7 +66,7 @@ export default function Header() {
               <li>
                 <button
                   onClick={() => handleNavigate("login")}
-                  className="text-blue-600 hover:underline"
+                  className="text-blue-600 hover:underline cursor-pointer"
                 >
                   Đăng nhập
                 </button>
@@ -72,7 +75,7 @@ export default function Header() {
               <li>
                 <button
                   onClick={handleLogout}
-                  className="text-red-500 hover:underline"
+                  className="text-red-500 hover:underline cursor-pointer"
                 >
                   Đăng xuất
                 </button>
