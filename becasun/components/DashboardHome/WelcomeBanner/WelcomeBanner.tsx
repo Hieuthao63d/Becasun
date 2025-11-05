@@ -12,7 +12,7 @@ export default function WelcomeBanner({
   endDate
 }: WelcomeBannerProps) {
   return (
-    <div className="bg-gradient-to-r from-green-500 to-green-700 text-white p-8 rounded-2xl mb-8 shadow-md relative overflow-hidden">
+    <div className="bg-linear-to-r from-green-500 to-green-700 text-white p-8 rounded-2xl mb-8 shadow-md relative overflow-hidden">
       <h2 className="text-2xl font-semibold mb-2">
         Chào mừng {userName} đến với Becasunver4
       </h2>
