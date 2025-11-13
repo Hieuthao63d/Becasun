@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -8,53 +7,74 @@ export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
     const router = useRouter();
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleLogin = async () => {
+        console.log("HANDLE LOGIN ĐANG CHẠY");  // TEST
+
+        setError("");
         setLoading(true);
-        try {
-            const res = await axios.post("/api/auth/login", { email, password });
-            const { user, token } = res.data;
 
-            localStorage.setItem("becasun_user", JSON.stringify(user));
-            localStorage.setItem("becasun_token", token);
+        const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
 
-            alert("Đăng nhập thành công!");
-            if (user.role === "admin") router.push("/admin");
-            else router.push("/");
+        const data = await res.json();
+        setLoading(false);
 
-        } catch (err: any) {
-            alert(err.response?.data?.error || "Lỗi đăng nhập");
-        } finally {
-            setLoading(false);
+        if (!res.ok) {
+            setError(data.error);
+            return;
+        }
+
+        localStorage.setItem("becasun_user", JSON.stringify(data.user));
+
+        if (data.user.role === "Admin") {
+            console.log("REDIRECT TỚI /admin");
+            router.push("/admin");
+        } else {
+            router.push("/");
         }
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-50">
             <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
-                <h2 className="text-2xl font-semibold text-green-700 mb-4 text-center">Đăng nhập hệ thống</h2>
+                <h2 className="text-2xl font-semibold text-green-700 mb-4 text-center">
+                    Đăng nhập hệ thống
+                </h2>
 
-                <form onSubmit={handleLogin} className="space-y-4">
+                {error && <p className="text-red-600 mb-3">{error}</p>}
+
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleLogin();
+                    }}
+                    className="space-y-4"
+                >
                     <input
                         type="email"
                         placeholder="Email"
-                        className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-green-400 outline-none"
+                        className="w-full border border-gray-300 rounded-lg p-3"
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
                         placeholder="Mật khẩu"
-                        className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-green-400 outline-none"
+                        className="w-full border border-gray-300 rounded-lg p-3"
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
+
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg"
                     >
                         {loading ? "Đang đăng nhập..." : "Đăng nhập"}
                     </button>
