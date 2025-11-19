@@ -115,8 +115,6 @@ export default function RealTimeDashboard() {
                     <FaArrowLeft /> Quay lại Trang chủ
                 </Link>
             </div>
-
-            <ProfitCalculator/>
         </div>
     );
 }
