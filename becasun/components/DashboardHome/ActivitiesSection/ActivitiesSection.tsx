@@ -17,7 +17,7 @@ export default function ActivitiesSection({ activities }: Props) {
                     Hoạt động Phát triển Bền vững
                 </h2>
                 <p className="text-gray-600">
-                    Cùng Becasunver4 tham gia các hoạt động bảo vệ môi trường và phát triển bền vững
+                    Cùng Becasun tham gia các hoạt động bảo vệ môi trường và phát triển bền vững
                 </p>
             </div>
 

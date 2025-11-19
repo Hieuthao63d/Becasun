@@ -47,7 +47,7 @@ export default function Header() {
           onClick={() => handleNavigate("home")}
         >
           <FaSolarPanel color="text-yellow-500" size={18} />
-          <h1 className="text-xl font-bold text-gray-800">Becasunver4</h1>
+          <h1 className="text-xl font-bold text-gray-800">Becasun</h1>
         </div>
 
         {/* Navigation */}

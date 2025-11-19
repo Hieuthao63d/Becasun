@@ -5,9 +5,12 @@ import CompanyInfo from "@/components/DashboardHome/CompanyInfo/CompanyInfo";
 import FeedbackForm from "@/components/DashboardHome/FeedbackForm/FeedbackForm";
 import StatCard from "@/components/DashboardHome/StatCard/StatCard";
 import WelcomeBanner from "@/components/DashboardHome/WelcomeBanner/WelcomeBanner";
+import { useRouter } from "next/navigation";
 import { FaCoins, FaBatteryFull, FaPiggyBank, FaLeaf } from "react-icons/fa";
 
 export default function DashboardPage() {
+  const router = useRouter()
+
   const activities = [
     {
       title: "Trồng cây xanh",
@@ -35,10 +38,10 @@ export default function DashboardPage() {
       </div>
 
       <div className="flex flex-wrap gap-4 mb-8">
-        <button className="btn bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">
+        <button onClick={() => {router.push('/statement')}} className="btn bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">
           <FaCoins className="inline mr-2" /> Xem Hóa đơn Chi tiết
         </button>
-        <button className="btn border-2 border-green-600 text-green-700 px-5 py-2 rounded-lg hover:bg-green-600 hover:text-white">
+        <button onClick={() => {router.push('/dashboard')}} className="btn border-2 border-green-600 text-green-700 px-5 py-2 rounded-lg hover:bg-green-600 hover:text-white">
           <FaLeaf className="inline mr-2" /> Bảng điều khiển Thời gian Thực
         </button>
       </div>

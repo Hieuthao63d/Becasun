@@ -14,7 +14,7 @@ export default function WelcomeBanner({
   return (
     <div className="bg-linear-to-r from-green-500 to-green-700 text-white p-8 rounded-2xl mb-8 shadow-md relative overflow-hidden">
       <h2 className="text-2xl font-semibold mb-2">
-        Chào mừng {userName} đến với Becasunver4
+        Chào mừng {userName} đến với Becasun
       </h2>
       <p className="opacity-90">
         Đầu tư thông minh - Tiết kiệm bền vững - Bảo vệ môi trường
