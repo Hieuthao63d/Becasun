@@ -1,16 +1,15 @@
 import HomepageUnauthorized from '@/components/HomePageComponents/HomepageUnauthorized';
-import { getCurrentUser } from '@/lib/currentUser'
+import ProfitCalculator from '@/components/ProfitCalculator/ProfitCalculator';
+import { useUser } from '@/context/UserContext';
 import React from 'react'
 
 export default async function HomePage() {
-
-    const user = await getCurrentUser();
-
-    console.log(user);
-
+    const user = useUser();
 
     if (user) {
-        
+        return (    
+            <ProfitCalculator />
+        )
     }
 
     return (

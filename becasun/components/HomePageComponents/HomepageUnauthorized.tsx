@@ -19,7 +19,6 @@ function HomepageUnauthorized() {
             <Information />
             <FAQ />
             <ProfitCalculator />
-
         </div>
     )
 }
