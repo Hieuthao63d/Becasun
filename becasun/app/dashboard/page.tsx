@@ -15,6 +15,7 @@ import { Line } from "react-chartjs-2";
 import Link from "next/link";
 import StatCard from "@/components/DashboardEnergy/StatCard";
 import ChartCard from "@/components/DashboardEnergy/ChartCard";
+import ProfitCalculator from "@/components/ProfitCalculator/ProfitCalculator";
 
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Tooltip, Legend);
 
@@ -82,7 +83,7 @@ export default function RealTimeDashboard() {
                 Bảng điều khiển Năng lượng Cộng đồng
             </h2>
             <p className="text-gray-600 mb-8">
-                Dữ liệu thời gian thực từ hệ thống pin năng lượng mặt trời Becasunver4
+                Dữ liệu thời gian thực từ hệ thống pin năng lượng mặt trời Becasun
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">

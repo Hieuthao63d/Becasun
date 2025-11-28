@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import pool from "@/lib/db";
 import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 export async function POST(req: Request) {
     try {
@@ -53,15 +54,20 @@ export async function POST(req: Request) {
 
         // Tạo JWT token
         const token = jwt.sign(
-            {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                role: user.role,
-            },
+            { id: user.id, role: user.role, email: user.email, name: user.name},
             process.env.JWT_SECRET || "secret_key",
             { expiresIn: "2h" }
         );
+
+        const cookieStore = await cookies();
+        cookieStore.set("token", token, {
+            httpOnly: true, 
+            secure: process.env.NODE_ENV === "production", 
+            path: "/", 
+            maxAge: 60 * 60 * 2, 
+            sameSite: "strict",
+        });
+
 
         return NextResponse.json({
             message: "Đăng nhập thành công",
