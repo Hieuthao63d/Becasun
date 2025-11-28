@@ -70,10 +70,9 @@ export default function Header() {
         {user ? (
           <div className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full cursor-pointer">
             <div
-              onClick={() => handleNavigate("profile")}
               className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-semibold"
             >
-              {user.name.charAt(0).toUpperCase()}
+              {user.name?.charAt(0).toUpperCase()}
             </div>
             <span className="text-gray-700 text-sm">{user.email}</span>
             <button
@@ -84,13 +83,11 @@ export default function Header() {
             </button>
           </div>
         ) : (
-          <button
-            onClick={() => handleNavigate("login")}
-            className="text-green-700 hover:underline text-sm font-semibold"
-          >
+          <button onClick={() => handleNavigate("login")} className="text-green-700">
             Đăng nhập
           </button>
         )}
+
       </div>
     </header>
   );

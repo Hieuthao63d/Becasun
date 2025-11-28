@@ -1,3 +1,4 @@
+import UserHeader from "@/components/UserHeader";
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header/page";
@@ -5,8 +6,8 @@ import { getCurrentUser } from "@/lib/currentUser";
 import { UserProvider } from "@/context/UserContext";
 
 export const metadata: Metadata = {
-  title: "Becasun",
-  description: "",
+    title: "Becasun",
+    description: "Solar credits system",
 };
 
 export default async function RootLayout({
